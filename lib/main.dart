@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import './UI/pages/pages.dart';
 
 void main() {
@@ -11,11 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Neosilver Meteo App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Stack(
           children: [
@@ -27,8 +29,14 @@ class MyApp extends StatelessWidget {
                 ),
               ),
             ),
-            const SafeArea(
-              child: HomePage(),
+            SafeArea(
+              child: MaterialApp(
+                debugShowCheckedModeBanner: false,
+                routes: {
+                  '/': (context) => const HomePage(),
+                  '/addcity': (context) => const AddCityPage(),
+                },
+              ),
             ),
           ],
         ),
