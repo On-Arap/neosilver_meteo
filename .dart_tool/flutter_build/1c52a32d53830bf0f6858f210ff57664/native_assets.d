@@ -1,0 +1,1 @@
+ C:\\Users\\onara\\Documents\\Development\\neosilver_meteo\\neosilver_meteo\\.dart_tool\\flutter_build\\1c52a32d53830bf0f6858f210ff57664\\native_assets.yaml: 
