@@ -15,7 +15,6 @@ final class WeatherLoading extends WeatherState {
 
 final class WeatherLoaded extends WeatherState {
   final City city;
-  final latlong;
   final List<WeatherInformation> weatherInfo;
 
   WeatherLoaded({

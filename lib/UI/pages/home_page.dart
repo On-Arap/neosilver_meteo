@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neosilver_meteo/UI/components/components.dart';
+import 'package:neosilver_meteo/datas/data.dart';
+import 'package:neosilver_meteo/models/models.dart';
 import './pages.dart';
+import '../../models/city.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -13,13 +17,12 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: const Column(
+      body: Column(
         children: [
-          CityTile(city: 'Paris', weather: '🌫️'),
-          CityTile(city: 'London', weather: '⛈️'),
-          CityTile(city: 'Madrid', weather: '☀️'),
-          CityTile(city: 'Berlin', weather: '🌥️'),
-          CityTile(city: 'Paris', weather: '🌫️'),
+          CityTile(city: paris, weather: '🌫️'),
+          CityTile(city: london, weather: '⛈️'),
+          CityTile(city: madrid, weather: '☀️'),
+          CityTile(city: berlin, weather: '🌥️'),
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neosilver_meteo/datas/data.dart';
+import 'package:neosilver_meteo/models/models.dart';
 import '../pages/pages.dart';
 
 class CityTile extends StatelessWidget {
-  final String city;
+  final City city;
   final String weather;
   const CityTile({super.key, required this.city, required this.weather});
 
@@ -24,7 +27,7 @@ class CityTile extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  city,
+                  city.name,
                   style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
                 Text(
@@ -36,6 +39,8 @@ class CityTile extends StatelessWidget {
           ),
         ),
         onTap: () {
+          context.read<WeatherBloc>().add(AddCityEvent(city: city));
+
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => CityWeatherPage(city: city),
