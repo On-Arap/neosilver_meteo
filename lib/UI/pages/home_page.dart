@@ -17,13 +17,14 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Column(
-        children: [
-          CityTile(city: paris, weather: '🌫️'),
-          CityTile(city: london, weather: '⛈️'),
-          CityTile(city: madrid, weather: '☀️'),
-          CityTile(city: berlin, weather: '🌥️'),
-        ],
+      body: ListView.builder(
+        physics: const NeverScrollableScrollPhysics(),
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: cities.length,
+        itemBuilder: (context, index) {
+          return CityTile(city: cities[index]);
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

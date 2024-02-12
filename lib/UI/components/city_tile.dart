@@ -6,8 +6,7 @@ import '../pages/pages.dart';
 
 class CityTile extends StatelessWidget {
   final City city;
-  final String weather;
-  const CityTile({super.key, required this.city, required this.weather});
+  const CityTile({super.key, required this.city});
 
   @override
   Widget build(BuildContext context) {
@@ -23,18 +22,9 @@ class CityTile extends StatelessWidget {
           ),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  city.name,
-                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  weather,
-                  style: const TextStyle(fontSize: 32),
-                ),
-              ],
+            child: Text(
+              city.name,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ),
         ),
