@@ -12,8 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (BuildContext context) => WeatherBloc(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (BuildContext context) => WeatherBloc(),
+        ),
+        BlocProvider(
+          create: (context) => SearchCityCubit(),
+        ),
+      ],
       child: MaterialApp(
         title: 'Neosilver Meteo App',
         theme: ThemeData(
