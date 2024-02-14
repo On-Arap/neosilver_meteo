@@ -32,7 +32,6 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
     listInfo.add(WeatherInformation(infoTitle: 'Sunrise', value: responseJson['current']['sunrise'].toString().isNotEmpty ? format.format(DateTime.fromMillisecondsSinceEpoch(responseJson['current']['sunrise'] * 1000)).toString() : 'N/A'));
     listInfo.add(WeatherInformation(infoTitle: 'Sunset', value: responseJson['current']['sunset'].toString().isNotEmpty ? format.format(DateTime.fromMillisecondsSinceEpoch(responseJson['current']['sunset'] * 1000)).toString() : 'N/A'));
 
-    inspect(listInfo);
     emit(WeatherLoaded(city: event.city, weatherInfo: listInfo));
   }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neosilver_meteo/datas/list_cities/list_cities_cubit.dart';
 import './UI/pages/pages.dart';
 import './datas/data.dart';
 
@@ -19,6 +20,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => SearchCityCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ListCitiesCubit(),
         ),
       ],
       child: MaterialApp(

@@ -10,6 +10,8 @@ import 'package:neosilver_meteo/models/models.dart';
 part 'search_city_state.dart';
 
 List<City> searchedCities = [
+  City(name: 'Paris', lat: 48.866667, long: 2.333333),
+  City(name: 'London', lat: 51.509865, long: -0.118092),
   City(name: 'Madrid, Spain', lat: 40.416775, long: -3.703790),
   City(name: 'Stockholm, Sweden', lat: 59.3293235, long: 18.0685808),
   City(name: 'Amsterdam, Netherland', lat: 52.377956, long: 4.897070),
@@ -20,6 +22,10 @@ List<City> searchedCities = [
 
 class SearchCityCubit extends Cubit<SearchCityState> {
   SearchCityCubit() : super(SearchCityInitial());
+
+  resetList() {
+    emit(SearchCityInitial());
+  }
 
   Future<void> searchCity(String cityname) async {
     final response = await http.post(Uri.parse('http://api.openweathermap.org/geo/1.0/direct?q=$cityname&limit=5&appid=${apikey.apiKey}'));

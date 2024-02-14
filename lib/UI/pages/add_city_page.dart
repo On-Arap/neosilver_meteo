@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neosilver_meteo/UI/components/city_tile_search.dart';
 import 'package:neosilver_meteo/UI/components/searchField.dart';
 import 'package:neosilver_meteo/datas/data.dart';
+import 'package:neosilver_meteo/datas/list_cities/list_cities_cubit.dart';
 
 class AddCityPage extends StatelessWidget {
   const AddCityPage({super.key});
