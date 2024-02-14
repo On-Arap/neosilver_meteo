@@ -16,7 +16,11 @@ class CityTileSearch extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
         child: ListTile(
-          title: Text(city.name),
+          title: Row(
+            children: [
+              Text('${city.name}, ${city.country}'),
+            ],
+          ),
           trailing: InkWell(
             child: const Icon(
               Icons.add_box_outlined,

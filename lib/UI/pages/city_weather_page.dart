@@ -35,6 +35,10 @@ class CityWeatherPage extends StatelessWidget {
                         city.name,
                         style: const TextStyle(fontSize: 42),
                       ), // CITY NAME
+                      Text(
+                        city.country,
+                        style: const TextStyle(fontSize: 16),
+                      ), // Country
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10.0),
                         child: ListView.separated(

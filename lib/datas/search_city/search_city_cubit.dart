@@ -10,14 +10,14 @@ import 'package:neosilver_meteo/models/models.dart';
 part 'search_city_state.dart';
 
 List<City> searchedCities = [
-  City(name: 'Paris', lat: 48.866667, long: 2.333333),
-  City(name: 'London', lat: 51.509865, long: -0.118092),
-  City(name: 'Madrid, Spain', lat: 40.416775, long: -3.703790),
-  City(name: 'Stockholm, Sweden', lat: 59.3293235, long: 18.0685808),
-  City(name: 'Amsterdam, Netherland', lat: 52.377956, long: 4.897070),
-  City(name: 'Tokyo, Japan', lat: 35.652832, long: 139.839478),
-  City(name: 'Brasília, Brasil', lat: -15.793889, long: -47.882778),
-  City(name: 'Berlin, Germany', lat: 52.520008, long: 13.404954),
+  City(name: 'Paris', country: 'France', lat: 48.866667, long: 2.333333),
+  City(name: 'London', country: 'England', lat: 51.509865, long: -0.118092),
+  City(name: 'Madrid', country: 'Spain', lat: 40.416775, long: -3.703790),
+  City(name: 'Stockholm', country: 'Sweden', lat: 59.3293235, long: 18.0685808),
+  City(name: 'Amsterdam', country: 'Netherland', lat: 52.377956, long: 4.897070),
+  City(name: 'Tokyo', country: 'Japan', lat: 35.652832, long: 139.839478),
+  City(name: 'Brasília', country: 'Brasil', lat: -15.793889, long: -47.882778),
+  City(name: 'Berlin', country: 'Germany', lat: 52.520008, long: 13.404954),
 ];
 
 class SearchCityCubit extends Cubit<SearchCityState> {
