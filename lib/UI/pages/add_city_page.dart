@@ -48,13 +48,37 @@ class AddCityPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Expanded(child: BlocBuilder<SearchCityCubit, SearchCityState>(builder: (context, state) {
-                    if (state is WeatherLoaded) {
-                      return const Text('Loaded');
-                    } else {
-                      return const Text('Nothing to display');
-                    }
-                  })),
+                  const SizedBox(height: 20.0),
+                  Expanded(
+                    child: BlocBuilder<SearchCityCubit, SearchCityState>(
+                      builder: (context, state) {
+                        if (state is SearchCitySearched) {
+                          return ListView.separated(
+                            physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                            itemCount: state.cityList.length,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                color: Colors.white.withAlpha(30),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
+                                  child: ListTile(
+                                    title: Text(state.cityList[index].name),
+                                  ),
+                                ),
+                              );
+                            },
+                            separatorBuilder: (context, index) {
+                              return const SizedBox(
+                                height: 1.0,
+                              );
+                            },
+                          );
+                        } else {
+                          return const Text('Nothing to display');
+                        }
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),
