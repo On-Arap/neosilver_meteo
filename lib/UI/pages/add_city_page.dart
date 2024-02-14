@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:neosilver_meteo/UI/components/city_tile_search.dart';
+import 'package:neosilver_meteo/UI/components/searchField.dart';
 import 'package:neosilver_meteo/datas/data.dart';
 
 class AddCityPage extends StatelessWidget {
@@ -22,32 +24,7 @@ class AddCityPage extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: Column(
                 children: [
-                  SizedBox(
-                    height: 45,
-                    child: TextField(
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                        letterSpacing: 0.5,
-                      ),
-                      onChanged: (value) {
-                        context.read<SearchCityCubit>().searchCity(value);
-                      },
-                      decoration: InputDecoration(
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey.shade50),
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderRadius: BorderRadius.circular(8),
-                          borderSide: BorderSide(color: Colors.grey.shade50),
-                        ),
-                        hintText: "Search for Items",
-                        hintStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w400, letterSpacing: 0.5, decorationThickness: 6),
-                        prefixIcon: const Icon(Icons.search),
-                        prefixIconColor: Colors.black,
-                      ),
-                    ),
-                  ),
+                  const SearchField(),
                   const SizedBox(height: 20.0),
                   Expanded(
                     child: BlocBuilder<SearchCityCubit, SearchCityState>(
@@ -57,15 +34,7 @@ class AddCityPage extends StatelessWidget {
                             physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
                             itemCount: state.cityList.length,
                             itemBuilder: (context, index) {
-                              return Container(
-                                color: Colors.white.withAlpha(30),
-                                child: Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 5.0),
-                                  child: ListTile(
-                                    title: Text(state.cityList[index].name),
-                                  ),
-                                ),
-                              );
+                              return CityTileSearch(city: state.cityList[index]);
                             },
                             separatorBuilder: (context, index) {
                               return const SizedBox(

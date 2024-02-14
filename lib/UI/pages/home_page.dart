@@ -17,14 +17,19 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: ListView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: cities.length,
-        itemBuilder: (context, index) {
-          return CityTile(city: cities[index]);
-        },
+      body: Column(
+        children: [
+          const SizedBox(height: 50),
+          ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: cities.length,
+            itemBuilder: (context, index) {
+              return CityTile(city: cities[index]);
+            },
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {

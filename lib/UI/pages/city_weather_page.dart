@@ -34,20 +34,21 @@ class CityWeatherPage extends StatelessWidget {
                       Text(
                         city.name,
                         style: const TextStyle(fontSize: 42),
-                      ),
+                      ), // CITY NAME
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Container(
-                            child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemCount: state.weatherInfo.length,
-                              itemBuilder: (context, index) {
-                                return Padding(
-                                  padding: const EdgeInsets.symmetric(vertical: 5),
-                                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                        child: ListView.separated(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.weatherInfo.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              color: Colors.white.withAlpha(30),
+                              child: Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
                                     Text(
                                       state.weatherInfo[index].infoTitle,
                                       style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
@@ -56,11 +57,18 @@ class CityWeatherPage extends StatelessWidget {
                                       state.weatherInfo[index].value,
                                       style: const TextStyle(fontSize: 14),
                                     )
-                                  ]),
-                                );
-                              }),
-                        )),
-                      )
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                          separatorBuilder: (context, index) {
+                            return const SizedBox(
+                              height: 1.0,
+                            );
+                          },
+                        ),
+                      ),
                     ],
                   ),
                 ),

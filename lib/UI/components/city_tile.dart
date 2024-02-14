@@ -11,22 +11,20 @@ class CityTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 2),
       child: InkWell(
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.grey.shade50, width: 2),
+            color: Colors.white.withAlpha(30),
             borderRadius: const BorderRadius.all(
               Radius.circular(5),
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              city.name,
-              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-            ),
-          ),
+          child: ListTile(
+              title: Text(
+            city.name,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          )),
         ),
         onTap: () {
           context.read<WeatherBloc>().add(AddCityEvent(city: city));
