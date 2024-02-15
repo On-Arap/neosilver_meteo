@@ -18,42 +18,47 @@ class AddCityPage extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           fit: BoxFit.cover,
         ),
-        Scaffold(
-          backgroundColor: Colors.transparent,
-          body: SafeArea(
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  const SearchField(),
-                  const SizedBox(height: 20.0),
-                  Expanded(
-                    child: BlocBuilder<SearchCityCubit, SearchCityState>(
-                      builder: (context, state) {
-                        if (state is SearchCitySearched) {
-                          if (state.cityList.isNotEmpty) {
-                            return ListView.separated(
-                              physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-                              itemCount: state.cityList.length,
-                              itemBuilder: (context, index) {
-                                return CityTileSearch(city: state.cityList[index]);
-                              },
-                              separatorBuilder: (context, index) {
-                                return const SizedBox(
-                                  height: 1.0,
-                                );
-                              },
-                            );
+        GestureDetector(
+          onTap: () {
+            FocusManager.instance.primaryFocus?.unfocus();
+          },
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: SafeArea(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    const SearchField(),
+                    const SizedBox(height: 20.0),
+                    Expanded(
+                      child: BlocBuilder<SearchCityCubit, SearchCityState>(
+                        builder: (context, state) {
+                          if (state is SearchCitySearched) {
+                            if (state.cityList.isNotEmpty) {
+                              return ListView.separated(
+                                physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                                itemCount: state.cityList.length,
+                                itemBuilder: (context, index) {
+                                  return CityTileSearch(city: state.cityList[index]);
+                                },
+                                separatorBuilder: (context, index) {
+                                  return const SizedBox(
+                                    height: 1.0,
+                                  );
+                                },
+                              );
+                            } else {
+                              return const Text('No city found', style: TextStyle(fontWeight: FontWeight.bold));
+                            }
                           } else {
-                            return const Text('No city found', style: TextStyle(fontWeight: FontWeight.bold));
+                            return const Center(child: Text('Type a city in the search bar', style: TextStyle(fontWeight: FontWeight.bold)));
                           }
-                        } else {
-                          return const Center(child: Text('Type a city in the search bar', style: TextStyle(fontWeight: FontWeight.bold)));
-                        }
-                      },
+                        },
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
