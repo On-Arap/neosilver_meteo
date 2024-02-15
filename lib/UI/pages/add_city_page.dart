@@ -31,20 +31,24 @@ class AddCityPage extends StatelessWidget {
                     child: BlocBuilder<SearchCityCubit, SearchCityState>(
                       builder: (context, state) {
                         if (state is SearchCitySearched) {
-                          return ListView.separated(
-                            physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
-                            itemCount: state.cityList.length,
-                            itemBuilder: (context, index) {
-                              return CityTileSearch(city: state.cityList[index]);
-                            },
-                            separatorBuilder: (context, index) {
-                              return const SizedBox(
-                                height: 1.0,
-                              );
-                            },
-                          );
+                          if (state.cityList.isNotEmpty) {
+                            return ListView.separated(
+                              physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                              itemCount: state.cityList.length,
+                              itemBuilder: (context, index) {
+                                return CityTileSearch(city: state.cityList[index]);
+                              },
+                              separatorBuilder: (context, index) {
+                                return const SizedBox(
+                                  height: 1.0,
+                                );
+                              },
+                            );
+                          } else {
+                            return const Text('No city found', style: TextStyle(fontWeight: FontWeight.bold));
+                          }
                         } else {
-                          return const Text('Nothing to display');
+                          return const Center(child: Text('Type a city in the search bar', style: TextStyle(fontWeight: FontWeight.bold)));
                         }
                       },
                     ),

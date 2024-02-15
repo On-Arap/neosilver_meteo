@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neosilver_meteo/datas/data.dart';
+import 'package:neosilver_meteo/datas/list_cities/list_cities_cubit.dart';
 import 'package:neosilver_meteo/models/models.dart';
 import '../pages/pages.dart';
 
@@ -23,14 +24,23 @@ class CityTile extends StatelessWidget {
             ),
           ),
           child: ListTile(
-              title: Text(
-            city.name,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          )),
+            title: Text(
+              city.name,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            trailing: InkWell(
+              child: Icon(
+                Icons.delete_forever_outlined,
+                color: Colors.grey.shade900,
+              ),
+              onTap: () {
+                context.read<ListCitiesCubit>().removeCity(city);
+              },
+            ),
+          ),
         ),
         onTap: () {
           context.read<WeatherBloc>().add(AddCityEvent(city: city));
-
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (context) => CityWeatherPage(city: city),

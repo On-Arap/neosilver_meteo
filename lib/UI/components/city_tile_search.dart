@@ -22,9 +22,9 @@ class CityTileSearch extends StatelessWidget {
             ],
           ),
           trailing: InkWell(
-            child: const Icon(
+            child: Icon(
               Icons.add_box_outlined,
-              color: Colors.black,
+              color: Colors.grey.shade900,
             ),
             onTap: () {
               context.read<ListCitiesCubit>().addCity(city);

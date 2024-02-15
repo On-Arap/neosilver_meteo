@@ -39,7 +39,7 @@ class HomePage extends StatelessWidget {
                   },
                 );
               } else {
-                return const Center(child: Text('Add a city'));
+                return const Expanded(child: Center(child: Text('Add a city', style: TextStyle(fontWeight: FontWeight.bold))));
               }
             },
           ),

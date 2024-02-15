@@ -16,4 +16,9 @@ class ListCitiesCubit extends Cubit<ListCitiesState> {
     list.add(city);
     emit(ListCitiesLoaded(cityList: list));
   }
+
+  void removeCity(City city) {
+    list.remove(city);
+    emit(ListCitiesLoaded(cityList: list));
+  }
 }

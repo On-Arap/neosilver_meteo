@@ -32,6 +32,13 @@ class SearchCityCubit extends Cubit<SearchCityState> {
     final Map responseJson = jsonDecode(response.body);
 
     inspect(responseJson);
-    emit(SearchCitySearched(citySearched: cityname, cityList: searchedCities));
+    List<City> searched = [];
+    searchedCities.forEach((element) {
+      if (element.name.toLowerCase().contains(cityname.toLowerCase()) || element.country.toLowerCase().contains(cityname.toLowerCase())) {
+        searched.add(element);
+      }
+    });
+
+    emit(SearchCitySearched(citySearched: cityname, cityList: searched));
   }
 }
