@@ -21,6 +21,8 @@ class HomePage extends StatelessWidget {
       body: Column(
         children: [
           const SizedBox(height: 50),
+          CityTile(city: City(name: 'My location')),
+          const SizedBox(height: 50),
           BlocBuilder<ListCitiesCubit, ListCitiesState>(
             builder: (context, state) {
               if (state is ListCitiesLoaded) {

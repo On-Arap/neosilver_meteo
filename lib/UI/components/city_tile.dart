@@ -24,28 +24,33 @@ class CityTile extends StatelessWidget {
             ),
           ),
           child: ListTile(
+            textColor: city.name.contains('My location') ? Colors.black54 : Colors.black,
             title: Text(
               city.name,
               style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            trailing: InkWell(
-              child: Icon(
-                Icons.delete_forever_outlined,
-                color: Colors.grey.shade900,
-              ),
-              onTap: () {
-                context.read<ListCitiesCubit>().removeCity(city);
-              },
-            ),
+            trailing: city.name.contains('My location')
+                ? const SizedBox(width: 20)
+                : InkWell(
+                    child: Icon(
+                      Icons.delete_forever_outlined,
+                      color: Colors.grey.shade900,
+                    ),
+                    onTap: () {
+                      context.read<ListCitiesCubit>().removeCity(city);
+                    },
+                  ),
           ),
         ),
         onTap: () {
-          context.read<WeatherBloc>().add(AddCityEvent(city: city));
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => CityWeatherPage(city: city),
-            ),
-          );
+          if (!city.name.contains('My location')) {
+            context.read<WeatherBloc>().add(AddCityEvent(city: city));
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => CityWeatherPage(city: city),
+              ),
+            );
+          }
         },
       ),
     );
