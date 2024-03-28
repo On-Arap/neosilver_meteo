@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:neosilver_meteo/models/models.dart';
 
 String chooseBackground(List<WeatherInformation> weatherInfo) {
