@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:neosilver_meteo/UI/components/city_tile_search.dart';
-import 'package:neosilver_meteo/UI/components/searchField.dart';
+import 'package:neosilver_meteo/UI/components/search_field.dart';
 import 'package:neosilver_meteo/datas/data.dart';
 
 class AddCityPage extends StatelessWidget {
@@ -36,10 +36,12 @@ class AddCityPage extends StatelessWidget {
                           if (state is SearchCitySearched) {
                             if (state.cityList.isNotEmpty) {
                               return ListView.separated(
-                                physics: const AlwaysScrollableScrollPhysics(parent: BouncingScrollPhysics()),
+                                physics: const AlwaysScrollableScrollPhysics(
+                                    parent: BouncingScrollPhysics()),
                                 itemCount: state.cityList.length,
                                 itemBuilder: (context, index) {
-                                  return CityTileSearch(city: state.cityList[index]);
+                                  return CityTileSearch(
+                                      city: state.cityList[index]);
                                 },
                                 separatorBuilder: (context, index) {
                                   return const SizedBox(
@@ -48,10 +50,15 @@ class AddCityPage extends StatelessWidget {
                                 },
                               );
                             } else {
-                              return const Text('No city found', style: TextStyle(fontWeight: FontWeight.bold));
+                              return const Text('No city found',
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold));
                             }
                           } else {
-                            return const Center(child: Text('Type a city in the search bar', style: TextStyle(fontWeight: FontWeight.bold)));
+                            return const Center(
+                                child: Text('Type a city in the search bar',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold)));
                           }
                         },
                       ),
